@@ -1,13 +1,14 @@
 FROM ubuntu:16.04
 MAINTAINER Ed Kern <ejk@cisco.com>
-LABEL Description="VPP ubuntu 16 baseline" Vendor="cisco.com" Version="1.0"
+LABEL Description="VPP ubuntu 16 baseline" 
+LABEL Vendor="cisco.com" 
+LABEL Version="1.0"
 
 
 # Setup the environment
 ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get -q update && \
-    apt-get -y -qq upgrade && \
     apt-get install -y -qq \
         bash \
         bash-completion \
@@ -70,14 +71,8 @@ RUN apt-get -q update && \
         apt-transport-https \
         default-jre-headless \
         chrpath \
-        nasm
-
-#ADD files/pip /tmp/pip
-#ADD files/package.list /tmp/package.list
-ADD files/baseline.sh /tmp/baseline.sh
-#ADD files/basebuild.sh /tmp/basebuild.sh
-
-RUN chmod a+x /tmp/baseline.sh
+        nasm \
+        && rm -rf /var/lib/apt/lists/*
 
 RUN add-apt-repository -y ppa:openjdk-r/ppa
 
@@ -95,7 +90,8 @@ RUN apt-get -q update && \
         openjdk-8-jdk \
         jq \
         libffi-dev \
-	python-all
+	    python-all \
+        && rm -rf /var/lib/apt/lists/*
 
 RUN update-alternatives --set java /usr/lib/jvm/java-7-openjdk-amd64/jre/bin/java  && \
     update-alternatives --set javac /usr/lib/jvm/java-7-openjdk-amd64/bin/javac
@@ -152,30 +148,23 @@ RUN apt-get -q update && \
         python-virtualenv \
         python2.7-dev \
         uuid-dev \
-        zlib1g-dev
+        zlib1g-dev \
+        locales \
+        && rm -rf /var/lib/apt/lists/*
 
-# Install packages
-#RUN /tmp/baseline.sh
-
-#ADD files/basebuild.sh /tmp/basebuild.sh
-#RUN chmod a+x /tmp/basebuild.sh
-#RUN /tmp/basebuild.sh
 # Configure locales
-#RUN locale-gen en_US.UTF-8 && \
-#    dpkg-reconfigure locales
+RUN locale-gen en_US.UTF-8 && \
+    dpkg-reconfigure locales
 
 # Fix permissions
 RUN chown root:syslog /var/log \
     && chmod 755 /etc/default
 
-RUN mkdir /workspace
-RUN mkdir -p /var/ccache
+RUN mkdir /workspace && mkdir -p /var/ccache && ln -s /var/ccache /tmp/ccache
 ENV CCACHE_DIR=/var/ccache
+ENV LANG='en_US.UTF-8' LANGUAGE='en_US:en' LC_ALL='en_US.UTF-8'
 
 RUN gem install package_cloud
 
-#ADD files/packagecloud /root/.packagecloud
-# vim: set tabstop=4 shiftwidth=4:
-#ENTRYPOINT git clone https://gerrit.fd.io/r/vpp /workspace/foobar && /workspace/foobar/build-root/vagrant/build.sh && ls /workspace/foobar/build-root
-RUN ln -s /var/ccache /tmp/ccache
-#RUN git clone https://gerrit.fd.io/r/vpp /workspace/ubuntu14 && /workspace/ubuntu14/build-root/vagrant/build.sh && rm -rf /workspace/ubuntu14
+
+
