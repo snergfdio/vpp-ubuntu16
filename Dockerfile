@@ -118,7 +118,6 @@ RUN apt-get -q update && \
         libapr1 \
         libapr1-dev \
         libasprintf-dev \
-        libasprintf0c2 \
         libbison-dev \
         libconfuse-common \
         libconfuse-dev \
