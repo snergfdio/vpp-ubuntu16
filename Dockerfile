@@ -150,6 +150,8 @@ RUN apt-get -q update && \
         uuid-dev \
         zlib1g-dev \
         locales \
+        llvm \
+        clang \
         && rm -rf /var/lib/apt/lists/*
 
 # Configure locales
