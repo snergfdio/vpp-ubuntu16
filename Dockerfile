@@ -86,16 +86,11 @@ RUN apt-get -q update && \
         libxml-xpath-perl \
         make \
         wget \
-        openjdk-7-jdk \
         openjdk-8-jdk \
         jq \
         libffi-dev \
 	    python-all \
         && rm -rf /var/lib/apt/lists/*
-
-RUN update-alternatives --set java /usr/lib/jvm/java-7-openjdk-amd64/jre/bin/java  && \
-    update-alternatives --set javac /usr/lib/jvm/java-7-openjdk-amd64/bin/javac
-
 
 RUN apt-get -q update && \
     apt-get install -y -qq \
