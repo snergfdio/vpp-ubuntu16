@@ -2,7 +2,7 @@ FROM ubuntu:16.04
 MAINTAINER Ed Kern <ejk@cisco.com>
 LABEL Description="VPP ubuntu 16 baseline" 
 LABEL Vendor="cisco.com" 
-LABEL Version="2.0"
+LABEL Version="3.0"
 
 
 # Setup the environment
@@ -149,6 +149,7 @@ RUN apt-get -q update && \
         clang \
         && rm -rf /var/lib/apt/lists/*
 
+
 # Configure locales
 RUN locale-gen en_US.UTF-8 && \
     dpkg-reconfigure locales
@@ -163,7 +164,7 @@ ENV LANG='en_US.UTF-8' LANGUAGE='en_US:en' LC_ALL='en_US.UTF-8'
 
 RUN gem install package_cloud
 RUN pip install scapy
-RUN git clone https://gerrit.fd.io/r/vpp /workspace/ubuntu16 && /workspace/ubuntu16/build-root/vagrant/build.sh && rm -rf /workspace/ubuntu16
+RUN git clone https://gerrit.fd.io/r/vpp /workspace/ubuntu16 && cd /workspace/ubuntu16/build-root; make install-dep && rm -rf /workspace/ubuntu16 && rm -rf /var/lib/apt/lists/*
 
 
 
