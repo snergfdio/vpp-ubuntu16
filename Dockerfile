@@ -147,6 +147,7 @@ RUN apt-get -q update && \
         locales \
         llvm \
         clang \
+        clang-format \
         && rm -rf /var/lib/apt/lists/*
 
 
