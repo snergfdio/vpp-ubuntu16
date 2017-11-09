@@ -148,6 +148,7 @@ RUN apt-get -q update && \
         llvm \
         clang \
         clang-format \
+        libboost-all-dev \
         && rm -rf /var/lib/apt/lists/*
 
 
