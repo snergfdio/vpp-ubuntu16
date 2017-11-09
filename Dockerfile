@@ -149,6 +149,7 @@ RUN apt-get -q update && \
         clang \
         clang-format \
         libboost-all-dev \
+        ruby-dev \
         && rm -rf /var/lib/apt/lists/*
 
 
