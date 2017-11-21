@@ -7,6 +7,7 @@ LABEL Version="3.0"
 
 # Setup the environment
 ENV DEBIAN_FRONTEND=noninteractive
+ENV MAKE_PARALLEL_FLAGS -j 4
 
 RUN apt-get -q update && \
     apt-get install -y -qq \
