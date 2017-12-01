@@ -19,7 +19,7 @@ RUN apt-get -q update && \
         cloud-init \
         cron \
         curl \
-	libcurl3-gnutls
+	    libcurl3-gnutls \
         dbus \
         dstat \
         ethstatus \
