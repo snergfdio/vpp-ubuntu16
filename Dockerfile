@@ -153,6 +153,10 @@ RUN apt-get -q update && \
         libboost-all-dev \
         ruby-dev \
         zile \
+        default-jdk-headless \
+        check \
+        libsubunit-dev \
+        libsubunit0 \
         && rm -rf /var/lib/apt/lists/*
 
 
