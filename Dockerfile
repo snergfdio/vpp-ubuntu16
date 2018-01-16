@@ -2,12 +2,13 @@ FROM ubuntu:16.04
 MAINTAINER Ed Kern <ejk@cisco.com>
 LABEL Description="VPP ubuntu 16 baseline" 
 LABEL Vendor="cisco.com" 
-LABEL Version="3.0"
+LABEL Version="3.1"
 
 
 # Setup the environment
 ENV DEBIAN_FRONTEND=noninteractive
 ENV MAKE_PARALLEL_FLAGS -j 4
+ENV DOCKER_TEST=True
 
 RUN apt-get -q update && \
     apt-get install -y -qq \
@@ -157,6 +158,8 @@ RUN apt-get -q update && \
         check \
         libsubunit-dev \
         libsubunit0 \
+        emacs \
+        gdb \
         && rm -rf /var/lib/apt/lists/*
 
 
@@ -168,6 +171,7 @@ RUN locale-gen en_US.UTF-8 && \
 RUN chown root:syslog /var/log \
     && chmod 755 /etc/default
 
+RUN mkdir /tmp/dumps
 RUN mkdir /workspace && mkdir -p /var/ccache && ln -s /var/ccache /tmp/ccache
 ENV CCACHE_DIR=/var/ccache
 ENV LANG='en_US.UTF-8' LANGUAGE='en_US:en' LC_ALL='en_US.UTF-8'
