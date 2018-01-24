@@ -160,6 +160,7 @@ RUN apt-get -q update && \
         libsubunit0 \
         emacs \
         gdb \
+        libpcap-dev \
         && rm -rf /var/lib/apt/lists/*
 
 
