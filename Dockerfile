@@ -175,6 +175,8 @@ RUN chown root:syslog /var/log \
 RUN mkdir /tmp/dumps
 RUN mkdir /workspace && mkdir -p /var/ccache && ln -s /var/ccache /tmp/ccache
 ENV CCACHE_DIR=/var/ccache
+ENV CCACHE_READONLY=true
+
 ENV LANG='en_US.UTF-8' LANGUAGE='en_US:en' LC_ALL='en_US.UTF-8'
 
 RUN gem install rake
