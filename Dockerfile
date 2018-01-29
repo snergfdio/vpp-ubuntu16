@@ -169,6 +169,8 @@ RUN apt-get -q update && \
         python-markupsafe \
         python-jinja2 \
         python-pyparsing \
+        doxygen \
+        graphviz \
         && rm -rf /var/lib/apt/lists/*
 
 # Configure locales
