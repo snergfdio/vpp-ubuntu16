@@ -163,6 +163,13 @@ RUN apt-get -q update && \
         libpcap-dev \
         && rm -rf /var/lib/apt/lists/*
 
+# For the docs
+RUN apt-get -q update && \
+    apt-get install -y -qq \
+        python-markupsafe \
+        python-jinja2 \
+        python-pyparsing \
+        && rm -rf /var/lib/apt/lists/*
 
 # Configure locales
 RUN locale-gen en_US.UTF-8 && \
