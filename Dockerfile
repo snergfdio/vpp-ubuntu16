@@ -161,6 +161,7 @@ RUN apt-get -q update && \
         emacs \
         gdb \
         libpcap-dev \
+        python-ply \
         && rm -rf /var/lib/apt/lists/*
 
 # For the docs
