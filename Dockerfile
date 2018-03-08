@@ -130,6 +130,7 @@ RUN apt-get -q update && \
         libgettextpo0 \
         libltdl-dev \
         libmail-sendmail-perl \
+        libmbedtls-dev \
         libpython-dev \
         libpython2.7-dev \
         libsctp-dev \
