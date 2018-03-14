@@ -163,6 +163,7 @@ RUN apt-get -q update && \
         gdb \
         libpcap-dev \
         python-ply \
+        iperf3 \
         && rm -rf /var/lib/apt/lists/*
 
 # For the docs
