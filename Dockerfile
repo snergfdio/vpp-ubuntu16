@@ -155,6 +155,8 @@ RUN apt-get -q update && \
         llvm \
         clang \
         clang-format \
+        clang-5.0 \
+        clang-format-5.0 \
         libboost-all-dev \
         ruby-dev \
         zile \
@@ -169,6 +171,9 @@ RUN apt-get -q update && \
         iperf3 \
         libibverbs-dev \
         && rm -rf /var/lib/apt/lists/*
+
+#Repoint clang
+RUN update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-5.0 1000 && update-alternatives --install /usr/bin/clang clang /usr/bin/clang-5.0 1000 && update-alternatives --install /usr/bin/clang-format clang-format /usr/bin/clang-format-5.0 1000 &&
 
 # For the docs
 RUN apt-get -q update && \
