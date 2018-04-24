@@ -153,10 +153,8 @@ RUN apt-get -q update && \
         zlib1g-dev \
         locales \
         llvm \
-        clang \
         clang-format \
         clang-5.0 \
-        clang-format-5.0 \
         libboost-all-dev \
         ruby-dev \
         zile \
@@ -173,7 +171,7 @@ RUN apt-get -q update && \
         && rm -rf /var/lib/apt/lists/*
 
 #Repoint clang
-RUN update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-5.0 1000 && update-alternatives --install /usr/bin/clang clang /usr/bin/clang-5.0 1000 && update-alternatives --install /usr/bin/clang-format clang-format /usr/bin/clang-format-5.0 1000 &&
+RUN update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-5.0 1000 && update-alternatives --install /usr/bin/clang clang /usr/bin/clang-5.0 1000
 
 # For the docs
 RUN apt-get -q update && \
