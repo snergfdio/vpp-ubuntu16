@@ -153,6 +153,7 @@ RUN apt-get -q update && \
         zlib1g-dev \
         locales \
         llvm \
+        clang \
         clang-format \
         clang-5.0 \
         libboost-all-dev \
