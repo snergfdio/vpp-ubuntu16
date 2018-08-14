@@ -169,6 +169,7 @@ RUN apt-get -q update && \
         python-ply \
         iperf3 \
         libibverbs-dev \
+        dtach \
         && rm -rf /var/lib/apt/lists/*
 
 #Repoint clang
