@@ -220,6 +220,17 @@ RUN wget -O /w/Downloads/v0.48.tar.gz http://github.com/01org/intel-ipsec-mb/arc
 RUN wget -O /w/Downloads/v0.49.tar.gz http://github.com/01org/intel-ipsec-mb/archive/v0.49.tar.gz
 
 #RUN git clone https://gerrit.fd.io/r/vpp /workspace/ubuntu16 && cd /workspace/ubuntu16; make UNATTENDED=yes install-dep && rm -rf /workspace/ubuntu16 && rm -rf /var/lib/apt/lists/*
+ADD files/99fd.io.list /etc/apt/sources.list.d/99fd.io.list
+ADD files/98fd.io.list /etc/apt/sources.list.d/98fd.io.list
+
+ADD files/sshconfig /root/.ssh/config
+ADD files/badkey /root/.ssh/id_rsa
+RUN chmod 600 /root/.ssh/id_rsa
+RUN curl -L https://packagecloud.io/fdio/master/gpgkey |sudo apt-key add -
+
+RUN apt update && apt install -y vpp-dpdk-dev vpp-dpdk-dkms 
+RUN mkdir -p /w/dpdk && cd /w/dpdk; apt-get download vpp-dpdk-dkms
+RUN mkdir -p /w/workspace/vpp-test-poc-verify-master-ubuntu1604 && mkdir -p /home/jenkins && mkdir -p /run/shm
 
 
 
