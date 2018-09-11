@@ -230,7 +230,7 @@ RUN curl -L https://packagecloud.io/fdio/master/gpgkey |sudo apt-key add -
 
 RUN apt update && apt install -y vpp-dpdk-dev vpp-dpdk-dkms 
 RUN mkdir -p /w/dpdk && cd /w/dpdk; apt-get download vpp-dpdk-dkms
-RUN mkdir -p /w/workspace/vpp-test-poc-verify-master-ubuntu1604 && mkdir -p /home/jenkins && mkdir -p /run/shm
+RUN mkdir -p /w/workspace && mkdir -p /home/jenkins && mkdir -p /run/shm
 
 
 
