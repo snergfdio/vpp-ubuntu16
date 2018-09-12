@@ -170,6 +170,12 @@ RUN apt-get -q update && \
         iperf3 \
         libibverbs-dev \
         dtach \
+        cmake \
+        cmake-data \
+        libarchive13 \
+        libcurl3 \
+        liblzo2-2 \
+        ninja-build \
         && rm -rf /var/lib/apt/lists/*
 
 #Repoint clang
