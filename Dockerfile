@@ -227,7 +227,7 @@ RUN wget -O /w/Downloads/v0.49.tar.gz http://github.com/01org/intel-ipsec-mb/arc
 
 #RUN git clone https://gerrit.fd.io/r/vpp /workspace/ubuntu16 && cd /workspace/ubuntu16; make UNATTENDED=yes install-dep && rm -rf /workspace/ubuntu16 && rm -rf /var/lib/apt/lists/*
 ADD files/99fd.io.list /etc/apt/sources.list.d/99fd.io.list
-#ADD files/99fd.io.packagecloud.list /etc/apt/sources.list.d/99fd.io.packagecloud.list
+#ADD files/fdio_master.list /etc/apt/sources.list.d/fdio_master.list
 
 ADD files/sshconfig /root/.ssh/config
 ADD files/badkey /root/.ssh/id_rsa
