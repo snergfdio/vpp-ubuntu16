@@ -234,7 +234,7 @@ ADD files/badkey /root/.ssh/id_rsa
 RUN chmod 600 /root/.ssh/id_rsa
 RUN curl -L https://packagecloud.io/fdio/master/gpgkey |sudo apt-key add -
 
-RUN apt update && apt install -y vpp-dpdk-dev vpp-dpdk-dkms 
+#RUN apt update && apt install -y vpp-dpdk-dev vpp-dpdk-dkms 
 RUN mkdir -p /w/dpdk && cd /w/dpdk; apt-get download vpp-dpdk-dkms
 RUN mkdir -p /w/workspace && mkdir -p /home/jenkins && mkdir -p /run/shm
 
