@@ -189,6 +189,7 @@ RUN apt-get -q update && \
         python-pyparsing \
         doxygen \
         graphviz \
+        xmlstarlet \
         && rm -rf /var/lib/apt/lists/*
 
 # Configure locales
