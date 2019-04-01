@@ -93,6 +93,7 @@ RUN apt-get -q update && \
         make \
         wget \
         openjdk-8-jdk \
+        openjdk-11-jdk \
         jq \
         libffi-dev \
 	    python-all \
@@ -232,6 +233,8 @@ ADD files/99fd.io.list /etc/apt/sources.list.d/99fd.io.list
 
 ADD files/sshconfig /root/.ssh/config
 ADD files/badkey /root/.ssh/id_rsa
+ADD files/lf-update-java-alternatives /usr/local/bin/lf-update-java-alternatives
+RUN chmod 755 /usr/local/bin/lf-update-java-alternatives
 RUN chmod 600 /root/.ssh/id_rsa
 RUN curl -L https://packagecloud.io/fdio/master/gpgkey |sudo apt-key add -
 
