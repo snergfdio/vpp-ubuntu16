@@ -228,7 +228,7 @@ RUN wget -O /w/Downloads/v0.48.tar.gz http://github.com/01org/intel-ipsec-mb/arc
 RUN wget -O /w/Downloads/v0.49.tar.gz http://github.com/01org/intel-ipsec-mb/archive/v0.49.tar.gz
 
 #RUN git clone https://gerrit.fd.io/r/vpp /workspace/ubuntu16 && cd /workspace/ubuntu16; make UNATTENDED=yes install-dep && rm -rf /workspace/ubuntu16 && rm -rf /var/lib/apt/lists/*
-ADD files/99fd.io.list /etc/apt/sources.list.d/99fd.io.list
+#ADD files/99fd.io.list /etc/apt/sources.list.d/99fd.io.list
 #ADD files/fdio_master.list /etc/apt/sources.list.d/fdio_master.list
 
 ADD files/sshconfig /root/.ssh/config
@@ -237,6 +237,8 @@ ADD files/lf-update-java-alternatives /usr/local/bin/lf-update-java-alternatives
 RUN chmod 755 /usr/local/bin/lf-update-java-alternatives
 RUN chmod 600 /root/.ssh/id_rsa
 RUN curl -L https://packagecloud.io/fdio/master/gpgkey |sudo apt-key add -
+
+RUN curl -s https://packagecloud.io/install/repositories/fdio/master/script.deb.sh | sudo bash
 
 #RUN apt update && apt install -y vpp-dpdk-dev vpp-dpdk-dkms 
 RUN mkdir -p /w/dpdk && apt-get update -qq && cd /w/dpdk; apt-get download vpp-dpdk-dkms
