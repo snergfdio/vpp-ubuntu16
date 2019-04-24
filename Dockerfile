@@ -241,7 +241,6 @@ RUN curl -L https://packagecloud.io/fdio/master/gpgkey |sudo apt-key add -
 RUN curl -s https://packagecloud.io/install/repositories/fdio/master/script.deb.sh | sudo bash
 
 #RUN apt update && apt install -y vpp-dpdk-dev vpp-dpdk-dkms 
-RUN mkdir -p /w/dpdk && apt-get update -qq && cd /w/dpdk; apt-get download vpp-dpdk-dkms
 RUN mkdir -p /w/workspace && mkdir -p /home/jenkins && mkdir -p /run/shm
 
 
